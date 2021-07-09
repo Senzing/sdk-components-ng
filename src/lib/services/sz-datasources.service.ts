@@ -53,7 +53,7 @@ export class SzDataSourcesService {
    * add datasources and return a array of datasources after the operation.
    */
   public addDataSources(dataSources: string[]): Observable<string[]> {
-    return this.configService.addDataSources(dataSources)
+    return this.configService.addDataSources(undefined, dataSources)
     .pipe(
       map( (resp: SzDataSourcesResponse) => resp.data.dataSources )
     )

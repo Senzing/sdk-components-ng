@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import {
   AdminService, ConfigService,
-  Body,
+  DatasourcesBody,
   Body2,
   SzAttributeClass, SzAttributeTypesResponse, SzAttributeTypesResponseData,
   SzEntityClassDescriptor,
@@ -125,7 +125,7 @@ export class SzAdminService {
       tap( (data: SzServerInfo ) => { this.serverInfo = data; })
     );
   }
-  public addDataSources(body?: Body | string, dataSource?: string[], withRaw?: boolean, observe?: 'body', reportProgress?: boolean): Observable<SzDataSourcesResponseData> {
+  public addDataSources(body?: DatasourcesBody | string, dataSource?: string[], withRaw?: boolean, observe?: 'body', reportProgress?: boolean): Observable<SzDataSourcesResponseData> {
     if (!this.adminEnabled || this.readOnly) {
       throw new Error('admin operation not permitted.');
     }

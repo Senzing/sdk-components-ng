@@ -51,20 +51,34 @@ export * from './lib/sz-powered-by/sz-powered-by.component';
 export * from './lib/configuration/sz-configuration/sz-configuration.component';
 export * from './lib/configuration/sz-configuration-about/sz-configuration-about.component';
 export * from './lib/configuration/sz-preferences/sz-preferences.component';
-export * from '@senzing/sdk-graph-components';
+export {
+  SzRelationshipNetworkComponent,
+  SzRelationshipNetworkInputComponent,
+  SzRelationshipNetworkUploadComponent,
+  SzRelationshipNetworkLookupComponent,
+  SzRelationshipPathComponent,
+  SzNetworkGraphInputs,
+  SzGraphConfigurationService,
+  NodeFilterPair as SzGraphNodeFilterPair
+} from '@senzing/sdk-graph-components';
 
 /** models */
 export * from './lib/models/folio';
+export * from './lib/models/entity-search';
+export { SzSearchResultEntityData } from './lib/models/responces/search-results/sz-search-result-entity-data';
 export { SzBulkDataAnalysis } from './lib/models/data-analysis';
 export { SzBulkLoadStatus } from './lib/models/data-importing';
 export { SzDataSourceRecordAnalysis, SzDataSourceComposite } from './lib/models/data-sources';
-export { AdminStreamConnProperties, AdminStreamAnalysisConfig, AdminStreamLoadConfig, AdminStreamUploadRates } from './lib/models/data-admin';
+export { AdminStreamAnalysisConfig, AdminStreamLoadConfig, AdminStreamUploadRates } from './lib/models/data-admin';
 
 /** export some members of rest client to ease type use */
 export {
   Configuration as SzRestConfiguration,
   ConfigurationParameters as SzRestConfigurationParameters,
-
+  WebSocketConnectionConfiguration as SzWebSocketConnectionConfiguration,
+  WebSocketConnectionParameters as SzWebSocketConnectionParameters,
+  SzPocWebSocketService,
+  
   SzAttributeClass,
   SzAttributeNecessity,
   SzAttributeSearchResponse,

@@ -3,8 +3,13 @@ import { Subject, BehaviorSubject, merge, timer } from 'rxjs';
 import { takeUntil, debounce } from 'rxjs/operators';
 import { SzDataSourceComposite } from '../models/data-sources';
 import { SzSearchHistoryFolio, SzSearchHistoryFolioItem, SzSearchParamsFolio } from '../models/folio';
-import { AdminStreamAnalysisConfig, AdminStreamConnProperties, AdminStreamLoadConfig } from '../models/data-admin';
+import { AdminStreamAnalysisConfig, AdminStreamLoadConfig } from '../models/data-admin';
+
 //import { Configuration as SzRestConfiguration, ConfigurationParameters as SzRestConfigurationParameters } from '@senzing/rest-api-client-ng';
+import {
+  WebSocketConnectionConfiguration as SzWebSocketConnectionConfiguration,
+  WebSocketConnectionParameters as SzWebSocketConnectionParameters
+} from '@senzing/rest-api-client-ng';
 
 /**
  * preferences bus base class. provides common methods for
@@ -102,7 +107,7 @@ export class SzAdminPrefs extends SzSdkPrefsBase {
     uploadRate: -1
   };
   /** @internal */
-  private _streamConnectionProperties: AdminStreamConnProperties | undefined;
+  private _streamConnectionProperties: SzWebSocketConnectionParameters | undefined;
   /** @internal */
   private _streamLoadConfig: AdminStreamLoadConfig = {
     autoCreateMissingDataSources: false,
@@ -135,11 +140,11 @@ export class SzAdminPrefs extends SzSdkPrefsBase {
     if(!this.bulkSet) this.prefsChanged.next( this.toJSONObject() );
   }
   /** connection parameters defining how and where to stream to bulk-loading endpoints */
-  public get streamConnectionProperties(): AdminStreamConnProperties | undefined {
+  public get streamConnectionProperties(): SzWebSocketConnectionParameters | undefined {
     return this._streamConnectionProperties;
   }
   /** connection parameters defining how and where to stream to bulk-loading endpoints */
-  public set streamConnectionProperties(value: AdminStreamConnProperties | undefined) {
+  public set streamConnectionProperties(value: SzWebSocketConnectionParameters | undefined) {
     this._streamConnectionProperties = value;
     if(!this.bulkSet) this.prefsChanged.next( this.toJSONObject() );
   }
