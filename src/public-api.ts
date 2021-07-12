@@ -78,6 +78,7 @@ export {
   WebSocketConnectionConfiguration as SzWebSocketConnectionConfiguration,
   WebSocketConnectionParameters as SzWebSocketConnectionParameters,
   SzPocWebSocketService,
+  StreamLoadingService as SzPocStreamLoadingService,
   
   SzAttributeClass,
   SzAttributeNecessity,
